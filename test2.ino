@@ -46,6 +46,9 @@ float tempc3;
 int drst1;
 int drst2;
 int drst3;
+float volts1;
+float volts2;
+float volts3;
 
 unsigned long previousMillis = 0;   // Stores last time temperature was published
 const long interval = 10000;        // Interval at which to publish sensor readings
@@ -117,14 +120,17 @@ void OnDataRecv(const uint8_t * mac_addr, const uint8_t *incomingData, int len) 
   if (incomingReadings.id == 1) {
     tempc1 = incomingReadings.tempc;
     drst1 = incomingReadings.drst;
+    volts1 = incomingReadings.volts;
 
   } else if (incomingReadings.id == 2) {
     tempc2 = incomingReadings.tempc;
     drst2 = incomingReadings.drst;
+    volts2 = incomingReadings.volts;
 
   } else if (incomingReadings.id == 3) {
     tempc3 = incomingReadings.tempc;
     drst3 = incomingReadings.drst;
+    volts3 = incomingReadings.volts;
   }
   
   Serial.printf("Board ID %u: %u bytes\n", incomingReadings.id, len);
@@ -162,7 +168,6 @@ int32_t getWiFiChannel(const char *ssid) {
   }
   return 0;
 }
-
 
 const char index_html[] PROGMEM = R"rawliteral(
 <!DOCTYPE HTML><html>
@@ -203,7 +208,7 @@ const char index_html[] PROGMEM = R"rawliteral(
 	    font: bold15px arial,sans-serif;
 	    text-shadow: none;}
     .element1 {	
-		display: inline-block;
+		  display: inline-block;
       	background-color: lightgrey;
       	width:500px;
       	border-width: 5px;
@@ -212,7 +217,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       	text-align: center;
       	}
      .element2 {	
-		display: inline-block; 
+		  display: inline-block; 
       	background-color: lightgrey;
       	width:500px;
       	border-width: 5px;
@@ -221,7 +226,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       	text-align: center;
       	}
       .element3 {	
-		display: inline-block;
+		  display: inline-block;
       	background-color: lightgrey;
       	width:500px;
       	border-width: 5px;
@@ -230,7 +235,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       	text-align: center;
       	}
      .element4 {	
-		display: inline-block; 
+		  display: inline-block; 
       	background-color: lightgrey;
       	width:500px;
       	border-width: 5px;
@@ -239,7 +244,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       	text-align: center;
       	}
      .element5 {	
-		display: inline-block; 
+		  display: inline-block; 
       	background-color: lightgrey;
       	width:500px;
       	border-width: 5px;
@@ -248,7 +253,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       	text-align: center;
       	}
      .element6 {	
-		display: inline-block; 
+		  display: inline-block; 
       	background-color: lightgrey;
       	width:500px;
       	border-width: 5px;
@@ -284,7 +289,6 @@ const char index_html[] PROGMEM = R"rawliteral(
   </p>
   </div>
     <div class="element2">
-   
    <p4> 
     <br><strong><i class="fa-solid fa-battery-full" style="color:#008000;"></i> BATTERY STATUS</strong></p4>
    <p>
@@ -299,15 +303,18 @@ const char index_html[] PROGMEM = R"rawliteral(
     <span id="p1"></span>
     <sup class="units">&percnt;</sup>
    </p>
-  <p><br></p>
-   </div>  
+   <p>
+  <p2> <strong><span id="volts1"></span></strong></p2>
+  </p>
+  </div>  
   <p></p>
   <form action="/get">
        <input type="checkbox" name="enable_arm_input1" value="true" id="checkbox1"  %ENABLE_ARM_INPUT1%></span> 
          
     <span class="dht-labels"><strong>Freezer 1 </strong> set to: <input type="number" step="0.1" name="threshold_input1" value="%THRESHOLD1%" required></span> <br><br>  
     <p3 id="message1"></p3> <br><br>
-    <p4><strong>Freezer 1 is <span id="fanStatus1">%FAN_STATUS1%</span>.</strong></p4> <p></p>
+    <p4><strong>Freezer 1 is <span id="fanStatus1">%FAN_STATUS1%</span>.</strong></p4> <br><br>
+    <p4><strong><span id="drst1"></span></strong></p4> <p></p>
  
   <div class="element3">
   <p4> 
@@ -347,15 +354,18 @@ const char index_html[] PROGMEM = R"rawliteral(
     <span id="p2"></span>
     <sup class="units">&percnt;</sup>
    </p>
-  <p><br></p>
+   <p>
+  <p2> <strong><span id="volts2"></span></strong></p2>
+  </p>
    </div>   
  <p></p>
 
   <input type="checkbox" name="enable_arm_input2" value="true"  id="checkbox2"  %ENABLE_ARM_INPUT2%></span> 
   <span class="dht-labels"><strong>Freezer 2 </strong> set to: <input type="number" step="0.1" name="threshold_input2" value="%THRESHOLD2%" required></span> <br><br>  
   <p3 id="message2"></p3> <br><br>
-  <p4><strong>Freezer 2 is <span id="fanStatus2">%FAN_STATUS2%</span>.</strong></p4> <p></p> 
-  
+  <p4><strong>Freezer 2 is <span id="fanStatus2">%FAN_STATUS2%</span>.</strong></p4> <br><br> 
+  <p4><strong><span id="drst2"></span></strong></p4> <p></p>
+
     <div class="element5">
   <p4> 
     <br><strong> INDOOR</strong></p4>
@@ -394,7 +404,9 @@ const char index_html[] PROGMEM = R"rawliteral(
     <span id="p3"></span>
     <sup class="units">&percnt;</sup>
    </p>
-  <p><br></p>
+   <p>
+  <p2> <strong><span id="volts3"></span></strong></p2>
+  </p>
    </div>  
   <p></p>
   <form action="/get">
@@ -402,7 +414,8 @@ const char index_html[] PROGMEM = R"rawliteral(
          
     <span class="dht-labels"><strong>Freezer 3 </strong> set to: <input type="number" step="0.1" name="threshold_input3" value="%THRESHOLD3%" required></span> <br><br>  
     <p3 id="message3"></p3> <br><br>
-    <p4><strong>Freezer 3 is <span id="fanStatus3">%FAN_STATUS3%</span>.</strong></p4> <p></p>
+    <p4><strong>Freezer 3 is <span id="fanStatus3">%FAN_STATUS3%</span>.</strong></p4> <br><br>
+    <p4><strong><span id="drst3"></span></strong></p4> <p></p>
   
   <p2><input type="submit" value="Submit"></p2>   
   </form> 
@@ -414,14 +427,13 @@ const char index_html[] PROGMEM = R"rawliteral(
  var checkbox3 = document.getElementById("checkbox3");
  var message3 = document.getElementById("message3");
  
- 
  setInterval(function() {
       if (checkbox1.checked) {
         message1.innerHTML = "The freezer unit is working in automatic operation";
       } else {
         message1.innerHTML = "";
       }
-    }, 50); // Check every 500ms
+    }, 50); // Check every 50ms
     
  setInterval(function() {
       if (checkbox2.checked) {
@@ -429,7 +441,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       } else {
         message2.innerHTML = "";
       }
-    }, 50); // Check every 500ms
+    }, 50); // Check every 50ms
 
  setInterval(function() {
       if (checkbox3.checked) {
@@ -437,7 +449,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       } else {
         message3.innerHTML = "";
       }
-    }, 50); // Check every 500ms
+    }, 50); // Check every 50ms
    
      
 
@@ -500,13 +512,80 @@ if (!!window.EventSource) {
   xhttp.open("GET", "/status3", true);
   xhttp.send();
 }, 500 ) ;
+
+  setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("drst1").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "/drstatus1", true);
+  xhttp.send();
+}, 500 ) ;
+
+  setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("drst2").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "/drstatus2", true);
+  xhttp.send();
+}, 500 ) ;
+
+  setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("drst3").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "/drstatus3", true);
+  xhttp.send();
+}, 500 ) ;
+
+  setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("volts1").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "/btstatus1", true);
+  xhttp.send();
+}, 500 ) ;
+
+  setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("volts2").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "/btstatus2", true);
+  xhttp.send();
+}, 500 ) ;
+
+  setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("volts3").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "/btstatus3", true);
+  xhttp.send();
+}, 500 ) ;
+
 </script>
 </body>
 </html>)rawliteral";
 
 String processor(const String& var){
   if(var == "THRESHOLD1"){
-  return threshold1;
+    return threshold1;
   }
   else if(var == "ENABLE_ARM_INPUT1"){
     return enableArmChecked1;
@@ -531,8 +610,7 @@ String processor(const String& var){
   }    
   else if(var=="FAN_STATUS3"){
     return fanStatus3;  
-  }
-                  
+  }                 
   return String();
   }  
 
@@ -631,6 +709,94 @@ void setup() {
   request->send(200, "text/plain", fanStatus3);
   });
 
+  server.on("/drstatus1", HTTP_GET, [] (AsyncWebServerRequest *request) {
+    // Determine the state of the magnetic reed switch
+    bool doorOpen = (drst1 == HIGH);
+    // Set the text color based on the state of the door
+    String textColor = doorOpen ? "red" : "green";
+    // Create an HTML response with the appropriate text color
+    String htmlResponse = "<html><body><p4 style=\"color: " + textColor + "\">The door is " + (doorOpen ? "open." : "closed.") + "</p4></body></html>";
+   // Send the HTML response with the appropriate HTTP status code
+    request->send(200, "text/html", htmlResponse);
+  });
+
+
+  server.on("/drstatus2", HTTP_GET, [] (AsyncWebServerRequest *request) {
+    // Determine the state of the magnetic reed switch
+    bool doorOpen = (drst2 == HIGH);
+    // Set the text color based on the state of the door
+    String textColor = doorOpen ? "red" : "green";
+    // Create an HTML response with the appropriate text color
+    String htmlResponse = "<html><body><p4 style=\"color: " + textColor + "\">The door is " + (doorOpen ? "open." : "closed.") + "</p4></body></html>";
+    // Send the HTML response with the appropriate HTTP status code
+    request->send(200, "text/html", htmlResponse);
+  });
+
+  server.on("/drstatus3", HTTP_GET, [] (AsyncWebServerRequest *request) {
+    // Determine the state of the magnetic reed switch
+    bool doorOpen = (drst3 == HIGH);
+    // Set the text color based on the state of the door
+    String textColor = doorOpen ? "red" : "green";
+    // Create an HTML response with the appropriate text color
+    String htmlResponse = "<html><body><p4 style=\"color: " + textColor + "\">The door is " + (doorOpen ? "open." : "closed.") + "</p4></body></html>";
+    // Send the HTML response with the appropriate HTTP status code
+    request->send(200, "text/html", htmlResponse);
+  });
+
+  server.on("/btstatus1", HTTP_GET, [](AsyncWebServerRequest *request) {
+    float batt_value1 = volts1;
+    String text1;
+    if (batt_value1 >= 4.30 && batt_value1 <= 3.90) {
+      text1 = "Battery is fully charged!";
+    } else if (batt_value1 >= 3.20 && batt_value1 < 3.90) {
+      text1 = "Battery is OK.";
+    } else if (batt_value1 >= 2.90 && batt_value1 < 3.20) {
+      text1 = "Battery needs to be charged";
+    } else if (batt_value1 > 2.50 && batt_value1 < 2.90) {
+      text1 = "Battery is critical! Please charge.";
+    } else {
+      text1 = "LOADING...";
+    }
+    String htmlResponse = "<html><body><p2>" + text1 + "</p2></body></html>";
+    request->send(200, "text/html", htmlResponse);
+  });
+
+  server.on("/btstatus2", HTTP_GET, [](AsyncWebServerRequest *request) {
+    float batt_value2 = volts2;
+    String text2;
+    if (batt_value2 >= 4.30 && batt_value2 <= 3.90) {
+      text2 = "Battery is fully charged!";
+    } else if (batt_value2 >= 3.20 && batt_value2 < 3.90) {
+      text2 = "Battery is OK.";
+    } else if (batt_value2 >= 2.90 && batt_value2 < 3.20) {
+      text2 = "Battery needs to be charged";
+    } else if (batt_value2 > 2.50 && batt_value2 < 2.90) {
+      text2 = "Battery is critical! Please charge.";
+    } else {
+      text2 = "LOADING...";
+    }
+    String htmlResponse = "<html><body><p2>" + text2 + "</p2></body></html>";
+    request->send(200, "text/html", htmlResponse);
+  });
+
+  server.on("/btstatus3", HTTP_GET, [](AsyncWebServerRequest *request) {
+    float batt_value3 = volts3;
+    String text3;
+    if (batt_value3 >= 4.30 && batt_value3 <= 3.90) {
+      text3 = "Battery is fully charged!";
+    } else if (batt_value3 >= 3.20 && batt_value3 < 3.90) {
+      text3 = "Battery is OK.";
+    } else if (batt_value3 >= 2.90 && batt_value3 < 3.20) {
+      text3 = "Battery needs to be charged";
+    } else if (batt_value3 > 2.50 && batt_value3 < 2.90) {
+      text3 = "Battery is critical! Please charge.";
+    } else {
+      text3 = "LOADING...";
+    }
+    String htmlResponse = "<html><body><p2>" + text3 + "</p2></body></html>";
+    request->send(200, "text/html", htmlResponse);
+  });
+
   server.on("/get", HTTP_GET, [] (AsyncWebServerRequest *request) {
     // GET threshold_input value on <ESP_IP>/get?threshold_input=<inputMessage>
     if (request->hasParam(PARAM_INPUT_1)) {
@@ -694,6 +860,7 @@ void setup() {
 }
  
 void loop() {
+  //Serial.println (volts1);
   static unsigned long lastEventTime = millis();
   static const unsigned long EVENT_INTERVAL_MS = 10000;
   if ((millis() - lastEventTime) > EVENT_INTERVAL_MS) {
@@ -709,26 +876,27 @@ void loop() {
     myData.thres2 = threshold2.toFloat();
     myData.checkbox2 = inputMessage2;
     myData.thres3 = threshold3.toFloat();
-    myData.checkbox3 = inputMessage3; }
+    myData.checkbox3 = inputMessage3; 
 
- esp_err_t result1 = esp_now_send(broadcastAddress1, (uint8_t *) &myData, sizeof(myData));
-  if (result1 == ESP_OK) {
-    Serial.println("Sent with success");
-    }
-  else {
-    Serial.println("Error sending the data");}
+    esp_err_t result1 = esp_now_send(broadcastAddress1, (uint8_t *) &myData, sizeof(myData));
+      if (result1 == ESP_OK) {
+        Serial.println("Sent with success");
+        }
+      else {
+        Serial.println("Error sending the data");}
 
-  esp_err_t result2 = esp_now_send(broadcastAddress2, (uint8_t *) &myData, sizeof(myData));
-  if (result2 == ESP_OK) {
-    Serial.println("Sent with success");
-    }
-  else {
-    Serial.println("Error sending the data");}
+      esp_err_t result2 = esp_now_send(broadcastAddress2, (uint8_t *) &myData, sizeof(myData));
+      if (result2 == ESP_OK) {
+        Serial.println("Sent with success");
+        }
+      else {
+        Serial.println("Error sending the data");}
   
-  esp_err_t result3 = esp_now_send(broadcastAddress3, (uint8_t *) &myData, sizeof(myData));
-  if (result3 == ESP_OK) {
-    Serial.println("Sent with success");
-    }
-  else {
-    Serial.println("Error sending the data");} 
-  }   
+      esp_err_t result3 = esp_now_send(broadcastAddress3, (uint8_t *) &myData, sizeof(myData));
+      if (result3 == ESP_OK) {
+        Serial.println("Sent with success");
+        }
+      else {
+        Serial.println("Error sending the data");} 
+      }
+}  
