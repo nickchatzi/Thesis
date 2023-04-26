@@ -67,7 +67,8 @@ typedef struct struct_message {
   float volts; //incoming battery voltage readings
   float perc; //incoming battery percentage readings
   int drst; //incoming battery status readings
-} struct_message;
+}
+struct_message;
 
 //Structure to send data
 typedef struct struct_message2 {
@@ -77,10 +78,11 @@ typedef struct struct_message2 {
   String checkbox; //outgoing checkbox state for sensor device 1
   String checkbox2; //outgoing checkbox state for sensor device 2
   String checkbox3; //outgoing checkbox state for sensor device 3
-} struct_message2;
+}
+struct_message2;
 
-struct_message incomingReadings;
-struct_message2 myData;
+struct_message incomingReadings; //link structure struct_mwssage1 to incomingReadings object
+struct_message2 myData; ////link structure struct_message2 to myData object
 
 JSONVar board;
 
@@ -107,7 +109,7 @@ void OnDataRecv(const uint8_t * mac_addr, const uint8_t *incomingData, int len) 
   Serial.println(macStr);
   memcpy(&incomingReadings, incomingData, sizeof(incomingReadings));
   
-  // create boards to save the incoming readings
+  //access member variable to incomingReadings object
   board["id"] = incomingReadings.id; 
   board["temperaturec"] = incomingReadings.tempc;
   board["temperaturef"] = incomingReadings.tempf;
@@ -118,7 +120,7 @@ void OnDataRecv(const uint8_t * mac_addr, const uint8_t *incomingData, int len) 
   String jsonString = JSON.stringify(board);
   events.send(jsonString.c_str(), "new_readings", millis());
 
-  //set temperature, door state and battery voltage readings to variables depending the id of each sensor device
+  //set temperature, door state and battery voltage readings to object depending the ID of each sensor device
   //variables for the first sensor device
   if (incomingReadings.id == 1) {
     tempc1 = incomingReadings.tempc;
@@ -631,7 +633,7 @@ void setup() {
     delay(1000);
     Serial.println("Setting as a Wi-Fi Station..");
   }
-  
+
   int32_t channel = getWiFiChannel(WIFI_SSID);
 
   //WiFi.printDiag(Serial); 
