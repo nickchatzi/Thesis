@@ -177,97 +177,97 @@ int32_t getWiFiChannel(const char *ssid) {
 const char index_html[] PROGMEM = R"rawliteral(
 <!DOCTYPE HTML><html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://kit.fontawesome.com/7ae1530eb9.js" crossorigin="anonymous"></script>
-<style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://kit.fontawesome.com/7ae1530eb9.js" crossorigin="anonymous"></script>
+  <style>
     html {
-      font-family: Arial;
-      display: inline-block;
-      margin: 0px auto;
-      text-align: center;
-      }
-      h2 { font-size: 3.0rem; }
-      p { font-size: 3.0rem; }
-      p2 {font-size: 1.1rem;}
-      p3 {font-size: 1.1rem;
+     font-family: Arial;
+     display: inline-block;
+     margin: 0px auto;
+     text-align: center;
+    }
+    h2 { font-size: 3.0rem; }
+    p { font-size: 3.0rem; }
+    p2 {font-size: 1.1rem;}
+    p3 {font-size: 1.1rem;
         color:#4CAF50;}
-      p4 {font-size: 1.5rem;
-    	  vertical-align:middle;
+    p4 {font-size: 1.5rem;
+    	vertical-align:middle;
       	padding-bottom: 15px;
         }
-      p5 {font-size: 1.5rem; }
-     	
-      .units { font-size: 1.2rem; }
-      .dht-labels{
-        font-size: 1.5rem;
-        vertical-align:middle;
-        padding-bottom: 15px;
-        }
-      input[type="submit"]{
-        background: #0066A2;
-	color: white;
-	border-style: outset;
-	border-color: #0066A2;
-	height: 50px;
-	width: 100px;
-	font: bold15px arial,sans-serif;
-	text-shadow: none;}
-      .element1 {	
-	display: inline-block;
-        background-color: lightgrey;
-      	width:500px;
-      	border-width: 5px;
-      	border-color: #4CA64C;
-      	border-style: solid;
-      	text-align: center;
-      	}
-     .element2 {	
-	display: inline-block; 
-      	background-color: lightgrey;
-      	width:500px;
-      	border-width: 5px;
-      	border-color: #4CA64C;
-      	border-style: solid;
-      	text-align: center;
-      	}
-      .element3 {	
-	display: inline-block;
-      	background-color: lightgrey;
-      	width:500px;
-      	border-width: 5px;
-      	border-color: #FF8C00;
-      	border-style: solid;
-      	text-align: center;
-      	}
-     .element4 {	
-	display: inline-block; 
-      	background-color: lightgrey;
-      	width:500px;
-      	border-width: 5px;
-      	border-color: #FF8C00;
-      	border-style: solid;
-      	text-align: center;
-      	}
-     .element5 {	
-	display: inline-block; 
-      	background-color: lightgrey;
-      	width:500px;
-      	border-width: 5px;
-      	border-color: #800080;
-      	border-style: solid;
-      	text-align: center;
-      	}
-     .element6 {	
-	display: inline-block; 
-      	background-color: lightgrey;
-      	width:500px;
-      	border-width: 5px;
-      	border-color: #800080;
-      	border-style: solid;
-      	text-align: center;
-      	}          
+     p5 {font-size: 1.5rem;
+     	}
+    .units { font-size: 1.2rem; }
+    .dht-labels{
+      font-size: 1.5rem;
+      vertical-align:middle;
+      padding-bottom: 15px;
+    }
+    input[type="submit"]{
+      background: #0066A2;
+	    color: white;
+	    border-style: outset;
+	    border-color: #0066A2;
+	    height: 50px;
+	    width: 100px;
+	    font: bold15px arial,sans-serif;
+	    text-shadow: none;}
+    .element1 {	
+		  display: inline-block;
+      background-color: lightgrey;
+      width:500px;
+      border-width: 5px;
+      border-color: #4CA64C;
+      border-style: solid;
+      text-align: center;
+    }
+    .element2 {	
+	    display: inline-block; 
+      background-color: lightgrey;
+      width:500px;
+      border-width: 5px;
+      border-color: #4CA64C;
+      border-style: solid;
+      text-align: center;
+    }
+    .element3 {	
+		  display: inline-block;
+      background-color: lightgrey;
+      width:500px;
+      border-width: 5px;
+      border-color: #FF8C00;
+      border-style: solid;
+      text-align: center;
+    }
+    .element4 {	
+		  display: inline-block; 
+      background-color: lightgrey;
+      width:500px;
+      border-width: 5px;
+      border-color: #FF8C00;
+      border-style: solid;
+      text-align: center;
+    }
+    .element5 {	
+		  display: inline-block; 
+      background-color: lightgrey;
+      width:500px;
+      border-width: 5px;
+      border-color: #800080;
+      border-style: solid;
+      text-align: center;
+    }
+    .element6 {	
+		  display: inline-block; 
+      background-color: lightgrey;
+      width:500px;
+      border-width: 5px;
+      border-color: #800080;
+      border-style: solid;
+      text-align: center;
+      } 
+          
   </style>
-
 </head>
 <body>
   <h2> FREEZER UNIT CONTROL SERVER </h2>
@@ -293,28 +293,29 @@ const char index_html[] PROGMEM = R"rawliteral(
     <sup class="units">&percnt;</sup>
   </p>
   </div>
-  <div class="element2">
-  <p4> 
+    <div class="element2">
+   <p4> 
     <br><strong><i class="fa-solid fa-battery-full" style="color:#008000;"></i> BATTERY STATUS</strong></p4>
-  <p>
-    <i class="fa-solid fa-bolt" style="color:#FFA500"></i>
-    <span class="dht-labels"> Battery Voltage:</span> 
+   <p>
+   	<i class="fa-solid fa-bolt" style="color:#FFA500"></i>
+     <span class="dht-labels"> Battery Voltage:</span> 
     <span id="v1"></span>
     <span class="units">V </span>
-  </p>
-  <p>
-    <i class="fa-solid fa-percent" style="color:#800000"></i>
-    <span class="dht-labels"> Battery Percentage: </span>
+   </p>
+   <p>
+   	<i class="fa-solid fa-percent" style="color:#800000"></i>
+     <span class="dht-labels"> Battery Percentage: </span>
     <span id="p1"></span>
     <sup class="units">&percnt;</sup>
-  </p>
-  <p>
+   </p>
+   <p>
   <p2> <strong><span id="volts1"></span></strong></p2>
   </p>
   </div>  
   <p></p>
   <form action="/get">
-    <input type="checkbox" name="enable_arm_input1" value="true" id="checkbox1"  %ENABLE_ARM_INPUT1%></span>          
+       <input type="checkbox" name="enable_arm_input1" value="true" id="checkbox1"  %ENABLE_ARM_INPUT1%></span> 
+         
     <span class="dht-labels"><strong>Freezer 1 </strong> set to: <input type="number" step="0.1" name="threshold_input1" value="%THRESHOLD1%" required></span> <br><br>  
     <p3 id="message1"></p3> <br><br>
     <p4><strong>Freezer 1 is <span id="fanStatus1">%FAN_STATUS1%</span>.</strong></p4> <br><br>
@@ -342,34 +343,35 @@ const char index_html[] PROGMEM = R"rawliteral(
     <sup class="units">&percnt;</sup>
   </p>
   </div>
-
-  <div class="element4">  
-  <p4> 
+    <div class="element4">
+   
+   <p4> 
     <br><strong><i class="fa-solid fa-battery-full" style="color:#008000;"></i> BATTERY STATUS</strong></p4>
-  <p>
-    <i class="fa-solid fa-bolt" style="color:#FFA500"></i>
-    <span class="dht-labels"> Battery Voltage:</span> 
+   <p>
+   	<i class="fa-solid fa-bolt" style="color:#FFA500"></i>
+     <span class="dht-labels"> Battery Voltage:</span> 
     <span id="v2"></span>
     <span class="units">V </span>
-  </p>
-  <p>
-   <i class="fa-solid fa-percent" style="color:#800000"></i>
-    <span class="dht-labels"> Battery Percentage: </span>
+   </p>
+   <p>
+   	<i class="fa-solid fa-percent" style="color:#800000"></i>
+     <span class="dht-labels"> Battery Percentage: </span>
     <span id="p2"></span>
     <sup class="units">&percnt;</sup>
+   </p>
+   <p>
+  <p2> <strong><span id="volts2"></span></strong></p2>
   </p>
-  <p>
-    <p2> <strong><span id="volts2"></span></strong></p2>
-  </p>
-  </div>   
-  <p></p>
+   </div>   
+ <p></p>
+
   <input type="checkbox" name="enable_arm_input2" value="true"  id="checkbox2"  %ENABLE_ARM_INPUT2%></span> 
   <span class="dht-labels"><strong>Freezer 2 </strong> set to: <input type="number" step="0.1" name="threshold_input2" value="%THRESHOLD2%" required></span> <br><br>  
   <p3 id="message2"></p3> <br><br>
   <p4><strong>Freezer 2 is <span id="fanStatus2">%FAN_STATUS2%</span>.</strong></p4> <br><br> 
   <p4><strong><span id="drst2"></span></strong></p4> <p></p>
 
-  <div class="element5">
+    <div class="element5">
   <p4> 
     <br><strong> INDOOR</strong></p4>
   <p>
@@ -391,85 +393,88 @@ const char index_html[] PROGMEM = R"rawliteral(
     <sup class="units">&percnt;</sup>
   </p>
   </div>
-
-  <div class="element6">
+    <div class="element6">
+   
    <p4> 
-      <br><strong><i class="fa-solid fa-battery-full" style="color:#008000;"></i> BATTERY STATUS</strong></p4>
+    <br><strong><i class="fa-solid fa-battery-full" style="color:#008000;"></i> BATTERY STATUS</strong></p4>
    <p>
    	<i class="fa-solid fa-bolt" style="color:#FFA500"></i>
-    <span class="dht-labels"> Battery Voltage:</span> 
+     <span class="dht-labels"> Battery Voltage:</span> 
     <span id="v3"></span>
     <span class="units">V </span>
    </p>
    <p>
    	<i class="fa-solid fa-percent" style="color:#800000"></i>
-    <span class="dht-labels"> Battery Percentage: </span>
+     <span class="dht-labels"> Battery Percentage: </span>
     <span id="p3"></span>
     <sup class="units">&percnt;</sup>
-  </p>
-  <p>
+   </p>
+   <p>
   <p2> <strong><span id="volts3"></span></strong></p2>
   </p>
-  </div>  
+   </div>  
   <p></p>
   <form action="/get">
-  <input type="checkbox" name="enable_arm_input3" value="true" id="checkbox3"  %ENABLE_ARM_INPUT3%></span>         
-  <span class="dht-labels"><strong>Freezer 3 </strong> set to: <input type="number" step="0.1" name="threshold_input3" value="%THRESHOLD3%" required></span> <br><br>  
-  <p3 id="message3"></p3> <br><br>
-  <p4><strong>Freezer 3 is <span id="fanStatus3">%FAN_STATUS3%</span>.</strong></p4> <br><br>
-  <p4><strong><span id="drst3"></span></strong></p4> <p></p>
- 
+       <input type="checkbox" name="enable_arm_input3" value="true" id="checkbox3"  %ENABLE_ARM_INPUT3%></span> 
+         
+    <span class="dht-labels"><strong>Freezer 3 </strong> set to: <input type="number" step="0.1" name="threshold_input3" value="%THRESHOLD3%" required></span> <br><br>  
+    <p3 id="message3"></p3> <br><br>
+    <p4><strong>Freezer 3 is <span id="fanStatus3">%FAN_STATUS3%</span>.</strong></p4> <br><br>
+    <p4><strong><span id="drst3"></span></strong></p4> <p></p>
+  
   <p2><input type="submit" value="Submit"></p2>   
   </form> 
 <script>
-  var checkbox1 = document.getElementById("checkbox1");
-  var message1 = document.getElementById("message1");
-  var checkbox2 = document.getElementById("checkbox2");
-  var message2 = document.getElementById("message2");
-  var checkbox3 = document.getElementById("checkbox3");
-  var message3 = document.getElementById("message3");
+ var checkbox1 = document.getElementById("checkbox1");
+ var message1 = document.getElementById("message1");
+ var checkbox2 = document.getElementById("checkbox2");
+ var message2 = document.getElementById("message2");
+ var checkbox3 = document.getElementById("checkbox3");
+ var message3 = document.getElementById("message3");
  
-setInterval(function() {
-  if (checkbox1.checked) {
-    message1.innerHTML = "The freezer unit is working in automatic operation";
-  } else {
-    message1.innerHTML = "";
-    }
-  }, 50); // Check every 50ms
+ setInterval(function() {
+      if (checkbox1.checked) {
+        message1.innerHTML = "The freezer unit is working in automatic operation";
+      } else {
+        message1.innerHTML = "";
+      }
+    }, 50); // Check every 50ms
     
  setInterval(function() {
-    if (checkbox2.checked) {
-      message2.innerHTML = "The freezer unit is working in automatic operation";
-    } else {
-      message2.innerHTML = "";
+      if (checkbox2.checked) {
+        message2.innerHTML = "The freezer unit is working in automatic operation";
+      } else {
+        message2.innerHTML = "";
       }
-  }, 50); // Check every 50ms
- setInterval(function() {
-    if (checkbox3.checked) {
-      message3.innerHTML = "The freezer unit is working in automatic operation";
-    } else {
-      message3.innerHTML = "";
-    }
-  }, 50); // Check every 50ms
-       
-if (!!window.EventSource) {
-  var source = new EventSource('/events');
- 
-  source.addEventListener('open', function(e) {
-  console.log("Events Connected");
-  }, false);
+    }, 50); // Check every 50ms
 
-  source.addEventListener('error', function(e) {
+ setInterval(function() {
+      if (checkbox3.checked) {
+        message3.innerHTML = "The freezer unit is working in automatic operation";
+      } else {
+        message3.innerHTML = "";
+      }
+    }, 50); // Check every 50ms
+   
+     
+
+if (!!window.EventSource) {
+ var source = new EventSource('/events');
+ 
+ source.addEventListener('open', function(e) {
+  console.log("Events Connected");
+ }, false);
+ source.addEventListener('error', function(e) {
   if (e.target.readyState != EventSource.OPEN) {
     console.log("Events Disconnected");
   }
-  }, false);
+ }, false);
  
-  source.addEventListener('message', function(e) {
+ source.addEventListener('message', function(e) {
   console.log("message", e.data);
-  }, false);
+ }, false);
  
-  source.addEventListener('new_readings', function(e) {
+ source.addEventListener('new_readings', function(e) {
   console.log("new_readings", e.data);
   var obj = JSON.parse(e.data);
   document.getElementById("tc"+obj.id).innerHTML = obj.temperaturec.toFixed(1);
@@ -477,103 +482,103 @@ if (!!window.EventSource) {
   document.getElementById("h"+obj.id).innerHTML = obj.humidity.toFixed(1);
   document.getElementById("v"+obj.id).innerHTML = obj.volts.toFixed(2);
   document.getElementById("p"+obj.id).innerHTML = obj.percentage.toFixed(2);
-  }, false);
+ }, false);
 }
 
-setInterval(function ( ) {
+  setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    document.getElementById("fanStatus1").innerHTML = this.responseText;
-  }
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("fanStatus1").innerHTML = this.responseText;
+    }
   };
   xhttp.open("GET", "/status1", true);
   xhttp.send();
 }, 500 ) ;
 
-setInterval(function ( ) {
+  setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    document.getElementById("fanStatus2").innerHTML = this.responseText;
-  }
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("fanStatus2").innerHTML = this.responseText;
+    }
   };
   xhttp.open("GET", "/status2", true);
   xhttp.send();
 }, 500 ) ;
 
-setInterval(function ( ) {
+  setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    document.getElementById("fanStatus3").innerHTML = this.responseText;
-  }
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("fanStatus3").innerHTML = this.responseText;
+    }
   };
   xhttp.open("GET", "/status3", true);
   xhttp.send();
 }, 500 ) ;
 
-setInterval(function ( ) {
+  setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    document.getElementById("drst1").innerHTML = this.responseText;
-  }
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("drst1").innerHTML = this.responseText;
+    }
   };
   xhttp.open("GET", "/drstatus1", true);
   xhttp.send();
 }, 500 ) ;
 
-setInterval(function ( ) {
+  setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    document.getElementById("drst2").innerHTML = this.responseText;
-  }
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("drst2").innerHTML = this.responseText;
+    }
   };
   xhttp.open("GET", "/drstatus2", true);
   xhttp.send();
 }, 500 ) ;
 
-setInterval(function ( ) {
+  setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    document.getElementById("drst3").innerHTML = this.responseText;
-  }
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("drst3").innerHTML = this.responseText;
+    }
   };
   xhttp.open("GET", "/drstatus3", true);
   xhttp.send();
 }, 500 ) ;
 
-setInterval(function ( ) {
+  setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    document.getElementById("volts1").innerHTML = this.responseText;
-  }
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("volts1").innerHTML = this.responseText;
+    }
   };
   xhttp.open("GET", "/btstatus1", true);
   xhttp.send();
 }, 500 ) ;
 
-setInterval(function ( ) {
+  setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    document.getElementById("volts2").innerHTML = this.responseText;
-  }
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("volts2").innerHTML = this.responseText;
+    }
   };
   xhttp.open("GET", "/btstatus2", true);
   xhttp.send();
 }, 500 ) ;
 
-setInterval(function ( ) {
+  setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    document.getElementById("volts3").innerHTML = this.responseText;
-  }
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("volts3").innerHTML = this.responseText;
+    }
   };
   xhttp.open("GET", "/btstatus3", true);
   xhttp.send();
@@ -759,7 +764,7 @@ void setup() {
   server.on("/btstatus1", HTTP_GET, [](AsyncWebServerRequest *request) {
     float batt_value1 = volts1; //float variable to check the batt voltage of sensor device 1
     String text1; //string for th displayed text on the server
-    if (batt_value1 >= 4.30 && batt_value1 <= 3.90) {
+    if (batt_value1 >= 3.90 && batt_value1 <= 4.40) {
       text1 = "Battery is fully charged!";
     } else if (batt_value1 >= 3.20 && batt_value1 < 3.90) {
       text1 = "Battery is OK.";
@@ -771,7 +776,14 @@ void setup() {
       text1 = "LOADING...";
     }
     // Create an HTML response with the appropriate text 
-    String htmlResponse = "<html><body><p2>" + text1 + "</p2></body></html>";
+    String htmlResponse = "<html><body>";
+    //if battery is critical print text in red
+    if (text1 == "Battery is critical! Please charge.") {
+      htmlResponse += "<p2 style='color:red'>" + text1 + "</p2>";
+    } else {
+      htmlResponse += "<p2>" + text1 + "</p2>";
+    }
+    htmlResponse += "</body></html>";
     // Send the HTML response with the appropriate HTTP status code
     request->send(200, "text/html", htmlResponse);
   });
@@ -792,7 +804,14 @@ void setup() {
       text2 = "LOADING...";
     }
     // Create an HTML response with the appropriate text 
-    String htmlResponse = "<html><body><p2>" + text2 + "</p2></body></html>";
+    String htmlResponse = "<html><body>";
+    //if battery is critical print text in red
+    if (text2 == "Battery is critical! Please charge.") {
+      htmlResponse += "<p2 style='color:red'>" + text2 + "</p2>";
+    } else {
+      htmlResponse += "<p2>" + text2 + "</p2>";
+    }
+    htmlResponse += "</body></html>";
     // Send the HTML response with the appropriate HTTP status code
     request->send(200, "text/html", htmlResponse);
   });
@@ -813,7 +832,14 @@ void setup() {
       text3 = "LOADING...";
     }
     // Create an HTML response with the appropriate text 
-    String htmlResponse = "<html><body><p2>" + text3 + "</p2></body></html>";
+    String htmlResponse = "<html><body>";
+    //if battery is critical print text in red
+    if (text3 == "Battery is critical! Please charge.") {
+      htmlResponse += "<p2 style='color:red'>" + text3 + "</p2>";
+    } else {
+      htmlResponse += "<p2>" + text3 + "</p2>";
+    }
+    htmlResponse += "</body></html>";
     // Send the HTML response with the appropriate HTTP status code
     request->send(200, "text/html", htmlResponse);
   });
@@ -946,4 +972,4 @@ void loop() {
     else {
       Serial.println("Error sending the data");} 
     }
-}  
+}
