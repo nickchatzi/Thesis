@@ -177,9 +177,9 @@ int32_t getWiFiChannel(const char *ssid) {
 const char index_html[] PROGMEM = R"rawliteral(
 <!DOCTYPE HTML><html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://kit.fontawesome.com/7ae1530eb9.js" crossorigin="anonymous"></script>
-  <style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://kit.fontawesome.com/7ae1530eb9.js" crossorigin="anonymous"></script>
+<style>
     html {
       font-family: Arial;
       display: inline-block;
@@ -205,15 +205,15 @@ const char index_html[] PROGMEM = R"rawliteral(
         }
       input[type="submit"]{
         background: #0066A2;
-	      color: white;
-	      border-style: outset;
-	      border-color: #0066A2;
-	      height: 50px;
-	      width: 100px;
-	      font: bold15px arial,sans-serif;
-	      text-shadow: none;}
+	color: white;
+	border-style: outset;
+	border-color: #0066A2;
+	height: 50px;
+	width: 100px;
+	font: bold15px arial,sans-serif;
+	text-shadow: none;}
       .element1 {	
-		    display: inline-block;
+	display: inline-block;
         background-color: lightgrey;
       	width:500px;
       	border-width: 5px;
@@ -222,7 +222,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       	text-align: center;
       	}
      .element2 {	
-		    display: inline-block; 
+	display: inline-block; 
       	background-color: lightgrey;
       	width:500px;
       	border-width: 5px;
@@ -231,7 +231,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       	text-align: center;
       	}
       .element3 {	
-		    display: inline-block;
+	display: inline-block;
       	background-color: lightgrey;
       	width:500px;
       	border-width: 5px;
@@ -240,7 +240,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       	text-align: center;
       	}
      .element4 {	
-		    display: inline-block; 
+	display: inline-block; 
       	background-color: lightgrey;
       	width:500px;
       	border-width: 5px;
@@ -249,7 +249,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       	text-align: center;
       	}
      .element5 {	
-		    display: inline-block; 
+	display: inline-block; 
       	background-color: lightgrey;
       	width:500px;
       	border-width: 5px;
@@ -258,7 +258,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       	text-align: center;
       	}
      .element6 {	
-		    display: inline-block; 
+	display: inline-block; 
       	background-color: lightgrey;
       	width:500px;
       	border-width: 5px;
@@ -297,7 +297,7 @@ const char index_html[] PROGMEM = R"rawliteral(
   <p4> 
     <br><strong><i class="fa-solid fa-battery-full" style="color:#008000;"></i> BATTERY STATUS</strong></p4>
   <p>
-   	<i class="fa-solid fa-bolt" style="color:#FFA500"></i>
+    <i class="fa-solid fa-bolt" style="color:#FFA500"></i>
     <span class="dht-labels"> Battery Voltage:</span> 
     <span id="v1"></span>
     <span class="units">V </span>
@@ -347,13 +347,13 @@ const char index_html[] PROGMEM = R"rawliteral(
   <p4> 
     <br><strong><i class="fa-solid fa-battery-full" style="color:#008000;"></i> BATTERY STATUS</strong></p4>
   <p>
-   	<i class="fa-solid fa-bolt" style="color:#FFA500"></i>
+    <i class="fa-solid fa-bolt" style="color:#FFA500"></i>
     <span class="dht-labels"> Battery Voltage:</span> 
     <span id="v2"></span>
     <span class="units">V </span>
   </p>
   <p>
-   	<i class="fa-solid fa-percent" style="color:#800000"></i>
+   <i class="fa-solid fa-percent" style="color:#800000"></i>
     <span class="dht-labels"> Battery Percentage: </span>
     <span id="p2"></span>
     <sup class="units">&percnt;</sup>
