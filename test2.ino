@@ -160,19 +160,6 @@ void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
   Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
 }
 
-// Insert SSID to get Master's Wi-Fi channel.
-constexpr char WIFI_SSID[] = "COSMOTE-C59FA4";
-//Function that scans for network and gets its channel.
-int32_t getWiFiChannel(const char *ssid) {
-  if (int32_t n = WiFi.scanNetworks()) {
-      for (uint8_t i=0; i<n; i++) {
-          if (!strcmp(ssid, WiFi.SSID(i).c_str())) {
-              return WiFi.channel(i);
-          }
-      }
-  }
-  return 0;
-}
 //html, javascript and css for functining and styling the web server
 const char index_html[] PROGMEM = R"rawliteral(
 <!DOCTYPE HTML><html>
@@ -596,26 +583,17 @@ String processor(const String& var){
   else if(var == "ENABLE_ARM_INPUT1"){ //if placeholder is the specific variable, replace with var enableArmChecked1
     return enableArmChecked1;
   }  
-  else if(var=="FAN_STATUS1"){ //if placeholder is the specific variable, replace with var fanStatus1
-    return fanStatus1;
-  }
   else if(var == "THRESHOLD2"){ //if placeholder is the specific variable, replace with var threshold2
     return threshold2;
   }  
   else if(var=="ENABLE_ARM_INPUT2"){ //if placeholder is the specific variable, replace with var enableArmChecked2
     return enableArmChecked2;
-  }    
-  else if(var=="FAN_STATUS2"){ //if placeholder is the specific variable, replace with var fanStatus2
-    return fanStatus2;  
-  }
+  } 
   else if(var == "THRESHOLD3"){ //if placeholder is the specific variable, replace with var threshold3
     return threshold3;
   }  
   else if(var=="ENABLE_ARM_INPUT3"){ //if placeholder is the specific variable, replace with var enableArmChecked3
     return enableArmChecked3;
-  }    
-  else if(var=="FAN_STATUS3"){ //if placeholder is the specific variable, replace with var fanStatus3
-    return fanStatus3;  
   }                 
   return String();
   }  
@@ -638,14 +616,6 @@ void setup() {
     delay(1000);
     Serial.println("Setting as a Wi-Fi Station..");
   }
-
-  int32_t channel = getWiFiChannel(WIFI_SSID);
-
-  //WiFi.printDiag(Serial); 
-  esp_wifi_set_promiscuous(true);
-  esp_wifi_set_channel(channel, WIFI_SECOND_CHAN_NONE);
-  esp_wifi_set_promiscuous(false);
-  WiFi.printDiag(Serial); 
 
   //if configuration of ip,gw and sn is not successfull print message to serial monitor
   if (!WiFi.config(local_IP, gateway, subnet, primaryDNS, secondaryDNS)) {
