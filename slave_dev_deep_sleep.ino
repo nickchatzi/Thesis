@@ -106,25 +106,25 @@ int32_t getWiFiChannel(const char *ssid) {
 
 
 
-float readDHTTemperature() {                                    //string to read temperature in celcius
-  float tc = dht.readTemperature();                               //define float t as the temperature in celcius
-  if (isnan(tc)) {                                                //Check if any reads failed and exit early
-    Serial.println("Failed to read from DHT sensor!");           // if failed try again and display --
+float readDHTTemperature() {                                    
+  float tc = dht.readTemperature();                               
+  if (isnan(tc)) {                                                
+    Serial.println("Failed to read from DHT sensor!");          
     return 0;    }                                                 
   else {
-    Serial.println(tc);                                           //else display the temperature in serial monitor
+    Serial.println(tc);                                          
     return tc;
   }
 }
 
-float readDHTTemperatureF() {                                  //string to read temperature in fahrenheit  
-  float tf= dht.readTemperature(true);                           //define float t as the temperature in fahrenheit
-  if (isnan(tf)) {                                               //Check if any reads failed and exit early
-    Serial.println("Failed to read from DHT sensor!");          // if failed try again and display --
+float readDHTTemperatureF() {                                   
+  float tf= dht.readTemperature(true);                           
+  if (isnan(tf)) {                                               
+    Serial.println("Failed to read from DHT sensor!");          
     return 0;
   }
   else {
-    Serial.println(tf);                                          //else display the temperature in serial monitor
+    Serial.println(tf);                                         
     return tf;
   }
 }
@@ -288,7 +288,6 @@ void loop() {
   Serial.println(relayState2);    
   delay(1000);  
   esp_deep_sleep_start(); 
-  //esp_light_sleep_start();
   }
   
   }
