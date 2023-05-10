@@ -11,8 +11,8 @@
 #include <DNSServer.h>
 
 //declare router credentials
-const char* ssid = "COSMOTE-C59FA4";
-const char* password = "zaFesY5dHSHEq54V";
+const char* ssid = "*********";
+const char* password = "**********";
 
 //threshold_input and enable_arm_input are threshold value and checkbox
 const char* PARAM_INPUT_1 = "threshold_input1"; 
