@@ -12,7 +12,7 @@
 
 //declare router credentials
 const char* ssid = "HUAWEI123";
-const char* password = "nikos1998";
+const char* password = "********";
 
 //threshold_input and enable_arm_input are threshold value and checkbox
 const char* PARAM_INPUT_1 = "threshold_input1"; 
